@@ -22,6 +22,19 @@
         android:id="@+id/detailedWeatherInfoFragment"
         android:name="com.github.weather.presentation.ui.home.DateWiseWeatherInfoFragment"
         android:label="detailed_weather_info_fragment"
-        tools:layout="@layout/date_wise_weather_info_fragment" />
+        tools:layout="@layout/date_wise_weather_info_fragment" >
+        <action
+            android:id="@+id/action_detailedWeatherInfoFragment_to_weatherInfoFragment"
+            app:destination="@id/weatherInfoFragment"
+            app:enterAnim="@anim/anim_slide_in_right"
+            app:exitAnim="@anim/anim_slide_out_left"
+            app:popEnterAnim="@anim/anim_slide_in_left"
+            app:popExitAnim="@anim/anim_slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/weatherInfoFragment"
+        android:name="com.github.weather.presentation.ui.home.WeatherInfoFragment"
+        android:label="fragment_weather_info"
+        tools:layout="@layout/fragment_weather_info" />
 
 </navigation>

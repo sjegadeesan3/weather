@@ -55,12 +55,24 @@ class DateWiseWeatherInfoFragment : Fragment() {
             it?.let {
                 val layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
                 binding.dateWiseWeatherRecyclerView.layoutManager = layoutManager
-                binding.dateWiseWeatherRecyclerView.adapter = DateWiseWeatherRecyclerView(it)
+                binding.dateWiseWeatherRecyclerView.adapter = DateWiseWeatherRecyclerView(it) { timeStamp: Long -> dateWiseWeatherLineItemClicked(timeStamp) }
                 val dividerItemDecoration = DividerItemDecoration(binding.dateWiseWeatherRecyclerView.context, layoutManager.orientation)
                 binding.dateWiseWeatherRecyclerView.addItemDecoration(dividerItemDecoration)
 
 
             }
         })
+    }
+
+    private fun dateWiseWeatherLineItemClicked(timeStamp: Long) {
+        if (requireActivity() is DateWiseWeatherInfoFragmentCommunicator) {
+            (requireActivity() as DateWiseWeatherInfoFragmentCommunicator)?.apply {
+                onForecastLineItemClicked()
+            }
+        }
+    }
+
+    interface DateWiseWeatherInfoFragmentCommunicator {
+        fun onForecastLineItemClicked()
     }
 }

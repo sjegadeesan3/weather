@@ -8,7 +8,8 @@ import com.github.weather.R
 import com.github.weather.databinding.DateWiseWeatherLineItemBinding
 import com.github.weather.presentation.data.DateWiseWeatherUiData
 
-class DateWiseWeatherRecyclerView(private var dateWiseWeatherUiDataList: List<DateWiseWeatherUiData>) : RecyclerView.Adapter<DateWiseWeatherRecyclerView.DayWeatherViewHolder>() {
+class DateWiseWeatherRecyclerView(private var dateWiseWeatherUiDataList: List<DateWiseWeatherUiData>,
+private val clickListener: (Long) -> Unit) : RecyclerView.Adapter<DateWiseWeatherRecyclerView.DayWeatherViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DayWeatherViewHolder {
         val binding = DateWiseWeatherLineItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -16,7 +17,7 @@ class DateWiseWeatherRecyclerView(private var dateWiseWeatherUiDataList: List<Da
     }
 
     override fun onBindViewHolder(holder: DayWeatherViewHolder, position: Int) {
-        holder.setUi(dateWiseWeatherUiDataList[position])
+        holder.setUi(dateWiseWeatherUiDataList[position], clickListener)
     }
 
     override fun getItemCount(): Int {
@@ -25,9 +26,8 @@ class DateWiseWeatherRecyclerView(private var dateWiseWeatherUiDataList: List<Da
 
     class DayWeatherViewHolder (private val binding: DateWiseWeatherLineItemBinding): RecyclerView.ViewHolder(binding.root){
 
-        fun setUi(dateWiseWeatherUiData: DateWiseWeatherUiData) {
+        fun setUi(dateWiseWeatherUiData: DateWiseWeatherUiData, clickListener: (Long) -> Unit) {
             binding.date.text = dateWiseWeatherUiData.time
-
             Glide
                 .with(binding.root.context)
                 .load(dateWiseWeatherUiData.icon)
@@ -35,6 +35,10 @@ class DateWiseWeatherRecyclerView(private var dateWiseWeatherUiDataList: List<Da
                 .dontAnimate()
                 .error(R.drawable.ic_launcher_foreground)
                 .into(binding.weatherIcon)
+
+            binding.lineItem.setOnClickListener {
+                clickListener(dateWiseWeatherUiData.timeStamp)
+            }
         }
     }
 }

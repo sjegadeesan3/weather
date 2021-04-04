@@ -14,12 +14,16 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.github.weather.R
 import com.github.weather.databinding.ActivityHomeBinding
+import com.github.weather.presentation.ui.home.DateWiseWeatherInfoFragment.DateWiseWeatherInfoFragmentCommunicator
+import com.github.weather.presentation.ui.home.HomeFragment.HomeFragmentCommunicator
 import com.github.weather.presentation.util.PermissionUtil.isLocationPermissionEnabled
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeActivity : AppCompatActivity(), HomeFragment.HomeFragmentCommunicator {
+class HomeActivity : AppCompatActivity(),
+    HomeFragmentCommunicator,
+    DateWiseWeatherInfoFragmentCommunicator {
 
     private val TAG = HomeFragment::class.java.simpleName
     private val viewModel: HomeViewModel by viewModel()
@@ -62,6 +66,11 @@ class HomeActivity : AppCompatActivity(), HomeFragment.HomeFragmentCommunicator 
     override fun onExtendedViewClicked() {
         val fragmentContainer = binding.fragmentContainer
         fragmentContainer.findNavController().navigate(R.id.action_homeFragment_to_detailedWeatherInfoFragment)
+    }
+
+    override fun onForecastLineItemClicked() {
+        val fragmentContainer = binding.fragmentContainer
+        fragmentContainer.findNavController().navigate(R.id.action_detailedWeatherInfoFragment_to_weatherInfoFragment)
     }
 
 }
