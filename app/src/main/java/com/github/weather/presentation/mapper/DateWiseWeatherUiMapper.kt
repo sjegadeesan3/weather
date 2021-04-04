@@ -17,10 +17,19 @@ class DateWiseWeatherUiMapper(val context: Context) {
 
             val dateWiseWeatherUiData = DateWiseWeatherUiData()
             dateWiseWeatherUiData.time = getFormattedDateTime(forecast?.forecastDateTime)
-            dateWiseWeatherUiData.icon = forecast?.weather?.get(0)?.icon ?: ""
+            dateWiseWeatherUiData.icon = getIconUrl(forecast)
             dateWiseWeatherUiDataList.add(dateWiseWeatherUiData)
         }
         return dateWiseWeatherUiDataList
+    }
+
+    private fun getIconUrl(forecast: Forecast?): String {
+        forecast?.weather?.get(0)
+        val icon = forecast?.weather?.get(0)?.icon ?: ""
+        return if(icon.isNotEmpty())
+            "http://openweathermap.org/img/wn/$icon@2x.png"
+        else
+            ""
     }
 
 }

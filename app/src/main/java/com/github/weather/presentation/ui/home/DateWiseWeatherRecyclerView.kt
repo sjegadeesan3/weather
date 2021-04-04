@@ -3,6 +3,8 @@ package com.github.weather.presentation.ui.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.github.weather.R
 import com.github.weather.databinding.DateWiseWeatherLineItemBinding
 import com.github.weather.presentation.data.DateWiseWeatherUiData
 
@@ -25,6 +27,14 @@ class DateWiseWeatherRecyclerView(private var dateWiseWeatherUiDataList: List<Da
 
         fun setUi(dateWiseWeatherUiData: DateWiseWeatherUiData) {
             binding.date.text = dateWiseWeatherUiData.time
+
+            Glide
+                .with(binding.root.context)
+                .load(dateWiseWeatherUiData.icon)
+                .placeholder(R.drawable.ic_launcher_background)
+                .dontAnimate()
+                .error(R.drawable.ic_launcher_foreground)
+                .into(binding.weatherIcon)
         }
     }
 }
