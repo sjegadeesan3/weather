@@ -28,3 +28,17 @@
 <p><img height= "400" src="https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg" alt="Clean Architecture" />
 
 
+### Libraries and Tools
+
+    * Retrofit
+    * OkHttp
+    * Koin
+    * Coroutines
+    * Room
+    * Navigation
+    * Glide
+    * ViewModel
+    * LiveData
+    * Material Design
+    * 
+
