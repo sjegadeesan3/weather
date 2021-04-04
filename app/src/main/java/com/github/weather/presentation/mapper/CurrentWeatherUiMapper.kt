@@ -26,8 +26,8 @@ class CurrentWeatherUiMapper(val context: Context) {
     }
 
     private fun CurrentWeatherDetail.getHumidity() =
-        main?.humidity?.toString()?.let { weather ->
-            "${context.getString(R.string.humidity)} $weather"
+        main?.humidity?.toString()?.let { humidity ->
+            String.format(context.getString(R.string.humidity), humidity)
         } ?: ""
 
     private fun CurrentWeatherDetail.getWind() =
