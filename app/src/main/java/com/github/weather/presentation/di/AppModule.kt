@@ -12,6 +12,8 @@ import com.github.weather.domain.repository.CurrentWeatherRepositoryImpl
 import com.github.weather.domain.repository.ForecastWeatherRepositoryImpl
 import com.github.weather.domain.usecase.current.GetCurrentWeatherLatLongUseCase
 import com.github.weather.domain.usecase.forecast.GetForecastWeatherLatLongUseCase
+import com.github.weather.presentation.ui.home.HomeViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
@@ -28,5 +30,7 @@ val appModule = module {
 
     single { get<Retrofit>().create(ForecastWeatherService::class.java) }
     single { get<Retrofit>().create(CurrentWeatherService::class.java) }
+
+    viewModel { HomeViewModel() }
 
 }
