@@ -47,7 +47,7 @@ class HomeActivity : AppCompatActivity() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         fusedLocationClient.lastLocation
             .addOnSuccessListener { location ->
-                viewModel.setLatitudeAndLongitude(location.latitude, location.longitude)
+                viewModel.setLatitudeAndLongitude(location.latitude.toString(), location.longitude.toString())
             }
             .addOnFailureListener {
                 Log.d(TAG, "Location Not received")

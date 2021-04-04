@@ -6,12 +6,12 @@ import androidx.lifecycle.ViewModel
 
 class HomeViewModel : ViewModel() {
 
-    private val mLatitudeAndLongitude: MutableLiveData<Pair<Double, Double>> = MutableLiveData()
-    val latitudeAndLongitude: LiveData<Pair<Double, Double>>
+    private val mLatitudeAndLongitude: MutableLiveData<Pair<String, String>> = MutableLiveData()
+    val latitudeAndLongitude: LiveData<Pair<String, String>>
         get() = mLatitudeAndLongitude
 
 
-    fun setLatitudeAndLongitude(latitude: Double, longitude: Double) {
+    fun setLatitudeAndLongitude(latitude: String, longitude: String) {
         val latLong = Pair(latitude, longitude)
         mLatitudeAndLongitude.postValue(latLong)
     }
