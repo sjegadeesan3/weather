@@ -8,14 +8,14 @@ import com.github.weather.R
 import com.github.weather.databinding.DayWeatherLineItemBinding
 import com.github.weather.presentation.data.ForecastDayWeatherUiData
 
-class DayWeatherRecyclerView(private var forecastDayWeatherUiDataList: List<ForecastDayWeatherUiData>) : RecyclerView.Adapter<DayWeatherRecyclerView.DayWeatherViewHolder>() {
+class OneDayWeatherRecyclerView(private var forecastDayWeatherUiDataList: List<ForecastDayWeatherUiData>) : RecyclerView.Adapter<OneDayWeatherRecyclerView.DayWeatherViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DayWeatherRecyclerView.DayWeatherViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OneDayWeatherRecyclerView.DayWeatherViewHolder {
         val binding = DayWeatherLineItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return DayWeatherViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: DayWeatherRecyclerView.DayWeatherViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: OneDayWeatherRecyclerView.DayWeatherViewHolder, position: Int) {
         holder.setUi(forecastDayWeatherUiDataList[position])
     }
 

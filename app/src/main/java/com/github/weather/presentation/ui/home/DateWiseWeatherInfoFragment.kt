@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.github.weather.R
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class DetailedWeatherInfoFragment : Fragment() {
+class DateWiseWeatherInfoFragment : Fragment() {
 
     private val viewModel: HomeViewModel by sharedViewModel()
 
@@ -16,7 +16,7 @@ class DetailedWeatherInfoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.detailed_weather_info_fragment, container, false)
+        return inflater.inflate(R.layout.date_wise_weather_info_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

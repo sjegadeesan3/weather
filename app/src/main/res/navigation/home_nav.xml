@@ -20,8 +20,8 @@
     </fragment>
     <fragment
         android:id="@+id/detailedWeatherInfoFragment"
-        android:name="com.github.weather.presentation.ui.home.DetailedWeatherInfoFragment"
+        android:name="com.github.weather.presentation.ui.home.DateWiseWeatherInfoFragment"
         android:label="detailed_weather_info_fragment"
-        tools:layout="@layout/detailed_weather_info_fragment" />
+        tools:layout="@layout/date_wise_weather_info_fragment" />
 
 </navigation>

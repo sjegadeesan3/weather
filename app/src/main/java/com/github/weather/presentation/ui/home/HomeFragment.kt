@@ -43,7 +43,7 @@ class HomeFragment : Fragment() {
         viewModel.forecastDayWeatherUiData.observe(requireActivity(), Observer { list ->
             list?.let {
                 binding.dayWeatherRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-                binding.dayWeatherRecyclerView.adapter = DayWeatherRecyclerView(it.take(20))
+                binding.dayWeatherRecyclerView.adapter = OneDayWeatherRecyclerView(it.take(20))
             }
         })
 
