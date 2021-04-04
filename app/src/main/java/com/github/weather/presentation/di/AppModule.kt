@@ -13,6 +13,7 @@ import com.github.weather.domain.repository.ForecastWeatherRepositoryImpl
 import com.github.weather.domain.usecase.current.GetCurrentWeatherLatLongUseCase
 import com.github.weather.domain.usecase.forecast.GetForecastWeatherLatLongUseCase
 import com.github.weather.presentation.mapper.CurrentWeatherUiMapper
+import com.github.weather.presentation.mapper.DateWiseWeatherUiMapper
 import com.github.weather.presentation.mapper.ForecastDayWeatherUiMapper
 import com.github.weather.presentation.ui.home.HomeViewModel
 import org.koin.android.ext.koin.androidApplication
@@ -36,6 +37,7 @@ val appModule = module {
 
     single { CurrentWeatherUiMapper(androidApplication()) }
     single { ForecastDayWeatherUiMapper(androidApplication()) }
+    single { DateWiseWeatherUiMapper(androidApplication()) }
 
     viewModel { HomeViewModel() }
 
