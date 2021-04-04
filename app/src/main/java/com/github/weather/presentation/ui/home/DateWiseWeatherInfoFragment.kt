@@ -38,12 +38,6 @@ class DateWiseWeatherInfoFragment : Fragment() {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.latitudeAndLongitude.observe(requireActivity(), { coordinates ->
@@ -67,6 +61,7 @@ class DateWiseWeatherInfoFragment : Fragment() {
     private fun dateWiseWeatherLineItemClicked(timeStamp: Long) {
         if (requireActivity() is DateWiseWeatherInfoFragmentCommunicator) {
             (requireActivity() as DateWiseWeatherInfoFragmentCommunicator)?.apply {
+                viewModel.weatherTimeStamp = timeStamp
                 onForecastLineItemClicked()
             }
         }

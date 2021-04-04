@@ -12,6 +12,7 @@ import com.github.weather.presentation.data.ForecastDayWeatherUiData
 import com.github.weather.presentation.mapper.CurrentWeatherUiMapper
 import com.github.weather.presentation.mapper.DateWiseWeatherUiMapper
 import com.github.weather.presentation.mapper.ForecastDayWeatherUiMapper
+import com.github.weather.presentation.mapper.WeatherInfoUiMapper
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -22,15 +23,17 @@ class HomeViewModel : ViewModel(), KoinComponent {
     private val currentWeatherUiMapper: CurrentWeatherUiMapper by inject()
     private val forecastDayWeatherUiMapper: ForecastDayWeatherUiMapper by inject()
     private val dateWiseWeatherUiMapper: DateWiseWeatherUiMapper by inject()
+    private val weatherInfoUiMapper: WeatherInfoUiMapper by inject()
 
     private val mLatitudeAndLongitude: MutableLiveData<Pair<String, String>> = MutableLiveData()
     val latitudeAndLongitude: LiveData<Pair<String, String>>
         get() = mLatitudeAndLongitude
 
     var forecastWeatherDetail: ForecastWeatherDetail? = null
+    var weatherTimeStamp: Long = 0L
 
 
-        private val mCurrentWeatherUiData: MutableLiveData<CurrentWeatherUiData?> = MutableLiveData()
+    private val mCurrentWeatherUiData: MutableLiveData<CurrentWeatherUiData?> = MutableLiveData()
     val currentWeatherUiData: LiveData<CurrentWeatherUiData?>
         get() = mCurrentWeatherUiData
 
@@ -41,6 +44,11 @@ class HomeViewModel : ViewModel(), KoinComponent {
     private val mDateWiseWeatherUiData: MutableLiveData<List<DateWiseWeatherUiData>?> = MutableLiveData()
     val dateWiseWeatherUiData: LiveData<List<DateWiseWeatherUiData>?>
         get() = mDateWiseWeatherUiData
+
+
+    private val mWeatherInfoUiData: MutableLiveData<List<Pair<String, String>>?> = MutableLiveData()
+    val weatherInfoUiData: LiveData<List<Pair<String, String>>?>
+        get() = mWeatherInfoUiData
 
 
     fun setLatitudeAndLongitude(latitude: String, longitude: String) {
@@ -68,6 +76,13 @@ class HomeViewModel : ViewModel(), KoinComponent {
         }
         val dateWiseWeatherUiData = dateWiseWeatherUiMapper.getUiModel(forecastWeatherDetail)
         this.mDateWiseWeatherUiData.postValue(dateWiseWeatherUiData)
+    }
+
+    fun getWeatherInfo() {
+        if(forecastWeatherDetail != null && weatherTimeStamp != 0L) {
+            val weatherInfoUiData = weatherInfoUiMapper.getUiModel(forecastWeatherDetail, weatherTimeStamp)
+            this.mWeatherInfoUiData.postValue(weatherInfoUiData)
+        }
     }
 
 }
