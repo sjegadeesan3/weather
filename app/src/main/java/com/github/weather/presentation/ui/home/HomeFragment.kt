@@ -29,6 +29,10 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initView()
         viewModel.latitudeAndLongitude.observe(requireActivity(), { coordinates ->
             //Get current and forecast weather info simultaneously
@@ -42,14 +46,11 @@ class HomeFragment : Fragment() {
 
         viewModel.forecastDayWeatherUiData.observe(requireActivity(), Observer { list ->
             list?.let {
-                binding.dayWeatherRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                binding.dayWeatherRecyclerView.layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
                 binding.dayWeatherRecyclerView.adapter = OneDayWeatherRecyclerView(it.take(20))
             }
         })
-
     }
-
-
 
     private fun initView() {
         binding.extendedView.setOnClickListener {

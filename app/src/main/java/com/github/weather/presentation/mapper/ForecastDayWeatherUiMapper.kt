@@ -17,8 +17,8 @@ class ForecastDayWeatherUiMapper(val context: Context) {
             if(listSize > count) {
                 count += 1
                 val forecastWeatherUiData = ForecastDayWeatherUiData()
-                forecastWeatherUiData.time = getHourAndSecondFromDate(forecast.forecastDateTime)
-                forecastWeatherUiData.temp = forecast.forecastMain.temperature.toString().appendDegreeCelsius()
+                forecastWeatherUiData.time = getHourAndSecondFromDate(forecast?.forecastDateTime ?: "")
+                forecastWeatherUiData.temp = forecast?.forecastMain?.temperature?.toString()?.appendDegreeCelsius() ?: ""
                 forecastWeatherUiData.iconUrl = getIconUrl(forecast)
                 forecastWeatherUiDataList.add(forecastWeatherUiData)
             }
@@ -26,10 +26,13 @@ class ForecastDayWeatherUiMapper(val context: Context) {
         return forecastWeatherUiDataList
     }
 
-    private fun getIconUrl(forecast: Forecast): String {
-        val icon = forecast.weather[0].icon
-        val c = "http://openweathermap.org/img/wn/$icon@2x.png"
-        return c
+    private fun getIconUrl(forecast: Forecast?): String {
+        forecast?.weather?.get(0)
+        val icon = forecast?.weather?.get(0)?.icon ?: ""
+        return if(icon.isNotEmpty())
+            "http://openweathermap.org/img/wn/$icon@2x.png"
+        else
+            ""
     }
 
 }

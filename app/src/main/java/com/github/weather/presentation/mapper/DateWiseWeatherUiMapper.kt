@@ -16,7 +16,8 @@ class DateWiseWeatherUiMapper(val context: Context) {
         forecastWeatherDetail?.forecastList?.forEach { forecast ->
 
             val dateWiseWeatherUiData = DateWiseWeatherUiData()
-            dateWiseWeatherUiData.time = getFormattedDateTime(forecast.forecastDateTime)
+            dateWiseWeatherUiData.time = getFormattedDateTime(forecast?.forecastDateTime)
+            dateWiseWeatherUiData.icon = forecast?.weather?.get(0)?.icon ?: ""
             dateWiseWeatherUiDataList.add(dateWiseWeatherUiData)
         }
         return dateWiseWeatherUiDataList

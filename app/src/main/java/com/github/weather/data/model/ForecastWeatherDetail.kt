@@ -12,113 +12,113 @@ import com.google.gson.annotations.SerializedName
 @Entity(tableName = "forecast_weather_detail")
 data class ForecastWeatherDetail(
     @SerializedName("city")
-    val city: City,
+    val city: City?,
     @PrimaryKey
     @SerializedName("cnt")
-    val count: Int,
+    val count: Int?,
     @SerializedName("cod")
-    val responseCode: String, //200
+    val responseCode: String?, //200
     @SerializedName("list")
-    val forecastList: List<Forecast>,
+    val forecastList: List<Forecast?>?,
     @SerializedName("message")
-    val message: Int
+    val message: Int?
     //val message: String
 )
 
 data class City(
     @SerializedName("coord")
-    val coordinates: Coordinates,
+    val coordinates: Coordinates?,
     @SerializedName("country")
-    val country: String,
+    val country: String?,
     @SerializedName("id")
     @PrimaryKey
-    val id: Int,
+    val id: Int?,
     @SerializedName("name")
-    val name: String,
+    val name: String?,
     @SerializedName("population")
-    val population: Long,
+    val population: Long?,
     @SerializedName("sunrise")
-    val sunrise: Long,
+    val sunrise: Long?,
     @SerializedName("sunset")
-    val sunset: Long,
+    val sunset: Long?,
     @SerializedName("timezone")
-    val timezone: Long
+    val timezone: Long?
 )
 
 data class Forecast(
     @SerializedName("clouds")
-    val clouds: ForecastClouds,
+    val clouds: ForecastClouds?,
     @SerializedName("dt")
-    val forecastTimeStamp: Long,//https://www.epochconverter.com/
+    val forecastTimeStamp: Long?,//https://www.epochconverter.com/
     @SerializedName("dt_txt")
-    val forecastDateTime: String,
+    val forecastDateTime: String?,
     @SerializedName("main")
-    val forecastMain: ForecastMain,
+    val forecastMain: ForecastMain?,
     @SerializedName("pop")
-    val probabilityOfPrecipitation: Double,
+    val probabilityOfPrecipitation: Double?,
     @SerializedName("sys")
-    val sys: ForecastSys,
+    val sys: ForecastSys?,
     @SerializedName("visibility")
-    val visibility: Int,
+    val visibility: Int?,
     @SerializedName("weather")
-    val weather: List<ForecastWeather>,
+    val weather: List<ForecastWeather?>?,
     @SerializedName("wind")
-    val wind: ForecastWind
+    val wind: ForecastWind?
 )
 
 data class Coordinates(
     @SerializedName("lat")
-    val latitude: Double,
+    val latitude: Double?,
     @SerializedName("lon")
-    val longitude: Double
+    val longitude: Double?
 )
 
 data class ForecastClouds(
     @SerializedName("all")
-    val all: Int
+    val all: Int?
 )
 
 
 data class ForecastMain(
     @SerializedName("feels_like")
-    val feelsLike: Double,
+    val feelsLike: Double?,
     @SerializedName("grnd_level")
-    val groundLevel: Int,
+    val groundLevel: Int?,
     @SerializedName("humidity")
-    val humidity: Int,
+    val humidity: Int?,
     @SerializedName("pressure")
-    val pressure: Int,
+    val pressure: Int?,
     @SerializedName("sea_level")
-    val seaLevel: Int,
+    val seaLevel: Int?,
     @SerializedName("temp") // Default Kelvin
-    val temperature: Double,
+    val temperature: Double?,
     @SerializedName("temp_kf")
-    val tempKf: Double,
+    val tempKf: Double?,
     @SerializedName("temp_max")
-    val temperatureMaximum: Double,
+    val temperatureMaximum: Double?,
     @SerializedName("temp_min")
-    val temperatureMinimum: Double
+    val temperatureMinimum: Double?
 )
 
 data class ForecastSys(
     @SerializedName("pod")
-    val partOfTheDay: String //Part of the day (n - night, d - day)
+    val partOfTheDay: String? //Part of the day (n - night, d - day)
 )
 
 data class ForecastWeather(
     @SerializedName("description")
-    val description: String,
+    val description: String?,
     @SerializedName("icon")
-    val icon: String, //http://openweathermap.org/img/wn/{{icon}}@2x.png
+    val icon: String?, //http://openweathermap.org/img/wn/{{icon}}@2x.png
     @SerializedName("id")
-    val id: Int,
+    val id: Int?,
     @SerializedName("main")
-    val main: String
+    val main: String?
 )
 
 data class ForecastWind(
     @SerializedName("deg")
-    val deg: Int,
+    val deg: Int?,
     @SerializedName("speed")
-    val speed: Double
+    val speed: Double?
 )

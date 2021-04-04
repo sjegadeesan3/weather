@@ -53,7 +53,7 @@ class DateWiseWeatherInfoFragment : Fragment() {
         })
         viewModel.dateWiseWeatherUiData.observe(requireActivity(), Observer {
             it?.let {
-                val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                val layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
                 binding.dateWiseWeatherRecyclerView.layoutManager = layoutManager
                 binding.dateWiseWeatherRecyclerView.adapter = DateWiseWeatherRecyclerView(it)
                 val dividerItemDecoration = DividerItemDecoration(binding.dateWiseWeatherRecyclerView.context, layoutManager.orientation)
