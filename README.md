@@ -18,6 +18,15 @@
 ### Extended View
 
     In the extended view, 5 days weather information list is listed with Date and Time. User can select a particular list item for detailed information.
+    
+    
+### Weather View
+
+    In the weather view, detailed weather information will be displayed.
+    
+### App Demo
+
+<p><img height= "1000" src="https://github.com/sjegadeesan3/weather/blob/main/app/src/main/assets/screen_record.gif" alt="Demo" />
 
 
 ### Architecutre
@@ -35,6 +44,11 @@
     * Koin
     * Coroutines
     * Room
+    * Data Binding
+    * View Binding
+    * LifeCycles
+    * Android KTX
+    * Permissions
     * Navigation
     * Glide
     * ViewModel
