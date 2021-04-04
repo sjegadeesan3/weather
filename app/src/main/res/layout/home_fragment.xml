@@ -16,7 +16,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="Singapore"
         tools:text="Singapore" />
 
     <TextView
@@ -28,7 +27,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/country_name"
-        android:text="Ang Mo Kio"
         tools:text="Ang Mo Kio" />
 
     <TextView
@@ -40,7 +38,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/city_name"
-        android:text="20ºC"
         tools:text="20ºC" />
 
     <TextView
@@ -51,7 +48,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/temprature"
-        android:text="Clouds"
         tools:text="Clouds" />
 
     <TextView
@@ -62,7 +58,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/weather_main"
-        android:text="broken clouds"
         tools:text="broken clouds" />
 
 
@@ -89,7 +84,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/temp_min"
                 app:layout_constraintTop_toTopOf="parent"
-                android:text="Temp Max : 20ºC"
                 tools:text="Temp Max : 20ºC" />
 
             <TextView
@@ -99,7 +93,6 @@
                 app:layout_constraintStart_toEndOf="@+id/temp_max"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:text="Temp Min : 20ºC"
                 tools:text="Temp Min : 20ºC" />
 
             <TextView
@@ -109,7 +102,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/humidity"
                 app:layout_constraintTop_toBottomOf="@+id/temp_max"
-                android:text="Wind : 1.54m/s"
                 tools:text="Wind : 1.54m/s" />
 
             <TextView
@@ -119,7 +111,6 @@
                 app:layout_constraintStart_toEndOf="@+id/wind"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/temp_min"
-                android:text="humidity : 83%"
                 tools:text="humidity : 83%" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
