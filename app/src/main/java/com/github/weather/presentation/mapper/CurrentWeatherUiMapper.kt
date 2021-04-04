@@ -5,13 +5,14 @@ import com.github.weather.R
 import com.github.weather.data.model.CurrentWeatherDetail
 import com.github.weather.presentation.data.CurrentWeatherUiData
 import com.github.weather.presentation.util.StringUtil.appendDegreeCelsius
+import java.util.*
 
 class CurrentWeatherUiMapper(val context: Context) {
 
     fun getUiModel(currentWeatherDetail: CurrentWeatherDetail?): CurrentWeatherUiData {
         val currentWeatherUiData = CurrentWeatherUiData()
         currentWeatherDetail?.apply {
-            currentWeatherUiData.countryName = sys?.country ?: ""
+            currentWeatherUiData.countryName = getCountryName()
             currentWeatherUiData.city = name ?: ""
             currentWeatherUiData.temperature = main?.temp?.toString()?.appendDegreeCelsius() ?: ""
             currentWeatherUiData.weatherMain = currentWeather?.get(0)?.main ?: ""
@@ -23,6 +24,16 @@ class CurrentWeatherUiMapper(val context: Context) {
             currentWeatherUiData.humidity = getHumidity()
         }
         return currentWeatherUiData
+    }
+
+    private fun CurrentWeatherDetail.getCountryName() : String {
+        return sys?.country?.let { country ->
+            val locale = Locale("", country)
+            return if (locale.displayCountry.isNotEmpty())
+                locale.displayCountry
+            else
+                country
+        } ?: ""
     }
 
     private fun CurrentWeatherDetail.getHumidity() =

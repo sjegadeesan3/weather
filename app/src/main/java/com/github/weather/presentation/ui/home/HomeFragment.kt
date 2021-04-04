@@ -31,7 +31,11 @@ class HomeFragment : Fragment() {
             lifecycleScope.launch(Dispatchers.IO) {
                 viewModel.getCurrentWeather(coordinates)
             }
+            lifecycleScope.launch(Dispatchers.IO) {
+                viewModel.getForecastWeather(coordinates)
+            }
         })
+
     }
 
 }

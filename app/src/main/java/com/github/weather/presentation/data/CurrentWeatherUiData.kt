@@ -1,6 +1,6 @@
 package com.github.weather.presentation.data
 
-open class CurrentWeatherUiData {
+class CurrentWeatherUiData {
     var countryName: String = ""
     var city: String = ""
     var temperature: String = ""
