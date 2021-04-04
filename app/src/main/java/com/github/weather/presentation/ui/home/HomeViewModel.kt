@@ -1,15 +1,14 @@
 package com.github.weather.presentation.ui.home
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.weather.domain.usecase.current.GetCurrentWeatherLatLongUseCase
 import com.github.weather.domain.usecase.forecast.GetForecastWeatherLatLongUseCase
 import com.github.weather.presentation.data.CurrentWeatherUiData
-import com.github.weather.presentation.data.ForecastWeatherUiData
+import com.github.weather.presentation.data.ForecastDayWeatherUiData
 import com.github.weather.presentation.mapper.CurrentWeatherUiMapper
-import com.github.weather.presentation.mapper.ForecastWeatherUiMapper
+import com.github.weather.presentation.mapper.ForecastDayWeatherUiMapper
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -18,7 +17,7 @@ class HomeViewModel : ViewModel(), KoinComponent {
     private val getCurrentWeatherLatLongUseCase: GetCurrentWeatherLatLongUseCase by inject()
     private val getForecastWeatherLatLongUseCase: GetForecastWeatherLatLongUseCase by inject()
     private val currentWeatherUiMapper: CurrentWeatherUiMapper by inject()
-    private val forecastWeatherUiMapper: ForecastWeatherUiMapper by inject()
+    private val forecastDayWeatherUiMapper: ForecastDayWeatherUiMapper by inject()
 
     private val mLatitudeAndLongitude: MutableLiveData<Pair<String, String>> = MutableLiveData()
     val latitudeAndLongitude: LiveData<Pair<String, String>>
@@ -29,9 +28,9 @@ class HomeViewModel : ViewModel(), KoinComponent {
     val currentWeatherUiData: LiveData<CurrentWeatherUiData?>
         get() = mCurrentWeatherUiData
 
-    private val mForecastWeatherUiData: MutableLiveData<ForecastWeatherUiData?> = MutableLiveData()
-    val forecastWeatherUiData: LiveData<ForecastWeatherUiData?>
-        get() = mForecastWeatherUiData
+    private val mForecastDayWeatherUiData: MutableLiveData<List<ForecastDayWeatherUiData>?> = MutableLiveData()
+    val forecastDayWeatherUiData: LiveData<List<ForecastDayWeatherUiData>?>
+        get() = mForecastDayWeatherUiData
 
 
     fun setLatitudeAndLongitude(latitude: String, longitude: String) {
@@ -47,8 +46,10 @@ class HomeViewModel : ViewModel(), KoinComponent {
 
     suspend fun getForecastWeather(coordinates: Pair<String, String>) {
         val forecastWeatherDetail = getForecastWeatherLatLongUseCase.execute(coordinates)
-        val forecastWeatherUiData = forecastWeatherUiMapper.getUiModel(forecastWeatherDetail)
-        this.mForecastWeatherUiData.postValue(forecastWeatherUiData)
+        val forecastWeatherUiData = forecastDayWeatherUiMapper.getUiModel(forecastWeatherDetail, 8)
+
+
+        this.mForecastDayWeatherUiData.postValue(forecastWeatherUiData)
     }
 
 }

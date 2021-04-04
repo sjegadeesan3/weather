@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.weather.R
 import com.github.weather.databinding.HomeFragmentBinding
 import kotlinx.coroutines.Dispatchers
@@ -33,6 +35,13 @@ class HomeFragment : Fragment() {
             }
             lifecycleScope.launch(Dispatchers.IO) {
                 viewModel.getForecastWeather(coordinates)
+            }
+        })
+
+        viewModel.forecastDayWeatherUiData.observe(requireActivity(), Observer { list ->
+            list?.let {
+                binding.dayWeatherRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                binding.dayWeatherRecyclerView.adapter = DayWeatherRecyclerView(it.take(20))
             }
         })
 
