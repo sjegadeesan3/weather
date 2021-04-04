@@ -6,8 +6,8 @@ import com.github.weather.data.repository.datasource.ForecastWeatherRemoteDataSo
 
 class ForecastWeatherRemoteDataSourceImpl(private val forecastWeatherService: ForecastWeatherService) : ForecastWeatherRemoteDataSource {
 
-    override suspend fun getCurrentWeatherWithLatLong(coordinates: Pair<String, String>): ForecastWeatherDetail? {
-        return forecastWeatherService.getForecastWeatherByLatLong(coordinates.first, coordinates.second).body()
+    override suspend fun getCurrentWeatherWithLatLong(latitude: String, longitude: String): ForecastWeatherDetail? {
+        return forecastWeatherService.getForecastWeatherByLatLong(latitude = latitude, longitude = longitude).body()
     }
 
 }

@@ -4,6 +4,6 @@ import com.github.weather.data.model.CurrentWeatherDetail
 
 interface CurrentWeatherRemoteDataSource {
 
-    suspend fun getCurrentWeatherWithLatLong(coordinates: Pair<String, String>): CurrentWeatherDetail?
+    suspend fun getCurrentWeatherWithLatLong(latitude: String, longitude: String): CurrentWeatherDetail?
 
 }

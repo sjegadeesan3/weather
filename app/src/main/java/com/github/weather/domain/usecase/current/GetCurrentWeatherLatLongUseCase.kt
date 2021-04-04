@@ -8,9 +8,7 @@ class GetCurrentWeatherLatLongUseCase(private val currentWeatherRepository: Curr
     : UseCaseWithParameter<Pair<String, String>, CurrentWeatherDetail?> {
 
     override suspend fun execute(parameter: Pair<String, String>): CurrentWeatherDetail? {
-        return currentWeatherRepository.getCurrentWeatherByLatLong(
-            latitude = parameter.first,
-            longitude = parameter.second)
+        return currentWeatherRepository.getCurrentWeatherByLatLong(latitude = parameter.first, longitude = parameter.second)
     }
 
 }

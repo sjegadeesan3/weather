@@ -7,7 +7,7 @@ import com.github.weather.data.repository.repo.ForecastWeatherRepository
 class ForecastWeatherRepositoryImpl(private val forecastWeatherRemoteDataSource: ForecastWeatherRemoteDataSource) : ForecastWeatherRepository {
 
     override suspend fun getForecastWeatherByLatLong(latitude: String, longitude: String): ForecastWeatherDetail? {
-        TODO("Not yet implemented")
+        return forecastWeatherRemoteDataSource.getCurrentWeatherWithLatLong(latitude, longitude)
     }
 
 }

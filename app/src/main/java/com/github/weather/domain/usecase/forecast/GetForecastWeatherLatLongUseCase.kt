@@ -8,9 +8,7 @@ class GetForecastWeatherLatLongUseCase (private val forecastWeatherRepository: F
     UseCaseWithParameter<Pair<String, String>, ForecastWeatherDetail?>  {
 
     override suspend fun execute(parameter: Pair<String, String>): ForecastWeatherDetail? {
-        return forecastWeatherRepository.getForecastWeatherByLatLong(
-            latitude = parameter.first,
-            longitude = parameter.second
+        return forecastWeatherRepository.getForecastWeatherByLatLong(latitude = parameter.first, longitude = parameter.second
         )
     }
 
