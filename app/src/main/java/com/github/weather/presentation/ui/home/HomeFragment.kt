@@ -29,7 +29,9 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        initView()
         viewModel.latitudeAndLongitude.observe(requireActivity(), { coordinates ->
+            //Get current and forecast weather info simultaneously
             lifecycleScope.launch(Dispatchers.IO) {
                 viewModel.getCurrentWeather(coordinates)
             }
@@ -45,6 +47,22 @@ class HomeFragment : Fragment() {
             }
         })
 
+    }
+
+
+
+    private fun initView() {
+        binding.extendedView.setOnClickListener {
+            if (requireActivity() is HomeFragmentCommunicator) {
+                (requireActivity() as HomeFragmentCommunicator)?.apply {
+                    onExtendedViewClicked()
+                }
+            }
+        }
+    }
+
+    interface HomeFragmentCommunicator {
+        fun onExtendedViewClicked()
     }
 
 }

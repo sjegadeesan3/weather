@@ -10,21 +10,26 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.core.app.ActivityCompat
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import com.github.weather.R
+import com.github.weather.databinding.ActivityHomeBinding
 import com.github.weather.presentation.util.PermissionUtil.isLocationPermissionEnabled
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), HomeFragment.HomeFragmentCommunicator {
 
     private val TAG = HomeFragment::class.java.simpleName
     private val viewModel: HomeViewModel by viewModel()
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         initPermission()
     }
 
@@ -52,6 +57,11 @@ class HomeActivity : AppCompatActivity() {
             .addOnFailureListener {
                 Log.d(TAG, "Location Not received")
             }
+    }
+
+    override fun onExtendedViewClicked() {
+        val fragmentContainer = binding.fragmentContainer
+        fragmentContainer.findNavController().navigate(R.id.action_homeFragment_to_detailedWeatherInfoFragment)
     }
 
 }

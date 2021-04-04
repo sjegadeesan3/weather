@@ -4,4 +4,6 @@
     <string name="temp_min">Temp Min : %1$s</string>
     <string name="wind">Wind : %1$s m/s</string>
     <string name="humidity">Humidity : %1$s %%</string>
+    <string name="quick_view">Quick View</string>
+    <string name="detailed_view">Detailed View</string>
 </resources>
