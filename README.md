@@ -42,3 +42,22 @@
     * Material Design
     * SSL Pinning
 
+### App Support
+
+    Weather app will be supported for Android 6.0 + mobiles and tablets.
+
+### How to Run
+
+    1. Clone the application
+    2. App the application in latest android studio. 
+    3. Download Gradle and Android SDK if required. 
+    4. Attach a mobile or start a emulator
+    5. Click the 'Run App' icon in the Android Studio .
+
+
+### Things to Develop in Future
+
+    1. Integration of graph for more detailed information
+    2. Enable search option. So user can view any place weather information.
+    3. Settings to configure weather information. (ie. Tempration - celcius, farenheit. Wind speed - m/s, km/h, mph), etc..
+    4. User interface grooming
