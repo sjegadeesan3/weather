@@ -4,87 +4,87 @@ import com.google.gson.annotations.SerializedName
 
 data class CurrentWeatherDetail(
     @SerializedName("base")
-    val base: String,
+    val base: String?,
     @SerializedName("clouds")
-    val clouds: CurrentClouds,
+    val clouds: CurrentClouds?,
     @SerializedName("cod")
-    val code: Int,
+    val code: Int?,
     @SerializedName("coord")
-    val coordinates: CurrentCoordinates,
+    val coordinates: CurrentCoordinates?,
     @SerializedName("dt")
-    val dt: Long,
+    val dt: Long?,
     @SerializedName("id")
-    val id: Long,
+    val id: Long?,
     @SerializedName("main")
-    val main: CurrentMain,
+    val main: CurrentMain?,
     @SerializedName("name")
-    val name: String,
+    val name: String?,
     @SerializedName("sys")
-    val sys: CurrentSys,
+    val sys: CurrentSys?,
     @SerializedName("timezone")
-    val timezone: Long,
+    val timezone: Long?,
     @SerializedName("visibility")
-    val visibility: Long,
+    val visibility: Long?,
     @SerializedName("weather")
-    val currentWeather: List<CurrentWeather>,
+    val currentWeather: List<CurrentWeather?>?,
     @SerializedName("wind")
-    val currentWind: CurrentWind
+    val currentWind: CurrentWind?
 )
 
 data class CurrentCoordinates(
     @SerializedName("lat")
-    val latitude: Double,
+    val latitude: Double?,
     @SerializedName("lon")
-    val longitude: Double
+    val longitude: Double?
 )
 
 data class CurrentClouds(
     @SerializedName("all")
-    val all: Long
+    val all: Long?
 )
 
 data class CurrentMain(
     @SerializedName("feels_like")
-    val feelsLike: Double,
+    val feelsLike: Double?,
     @SerializedName("humidity")
-    val humidity: Int,
+    val humidity: Int?,
     @SerializedName("pressure")
-    val pressure: Int,
+    val pressure: Int?,
     @SerializedName("temp")
-    val temp: Double,
+    val temp: Double?,
     @SerializedName("temp_max")
-    val tempMax: Double,
+    val tempMax: Double?,
     @SerializedName("temp_min")
-    val tempMin: Double
+    val tempMin: Double?
 )
 
 data class CurrentSys(
     @SerializedName("country")
-    val country: String,
+    val country: String?,
     @SerializedName("id")
-    val id: Long,
+    val id: Long?,
     @SerializedName("sunrise")
-    val sunrise: Long,
+    val sunrise: Long?,
     @SerializedName("sunset")
-    val sunset: Long,
+    val sunset: Long?,
     @SerializedName("type")
-    val type: Long
+    val type: Long?
 )
 
 data class CurrentWeather(
     @SerializedName("description")
-    val description: String,
+    val description: String?,
     @SerializedName("icon")
-    val icon: String,
+    val icon: String?,
     @SerializedName("id")
-    val id: Long,
+    val id: Long?,
     @SerializedName("main")
-    val main: String
+    val main: String?
 )
 
 data class CurrentWind(
     @SerializedName("deg")
-    val deg: Long,
+    val deg: Long?,
     @SerializedName("speed")
-    val speed: Double
+    val speed: Double?
 )

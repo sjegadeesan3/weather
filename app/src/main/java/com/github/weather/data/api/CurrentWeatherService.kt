@@ -10,7 +10,8 @@ interface CurrentWeatherService {
 
     @GET("weather")
     suspend fun getWeatherByLatLong(@Query("lat")latitude: String,
-                                     @Query("lon")longitude: String,
-                                     @Query("appid")apiKey: String = BuildConfig.API_KEY): Response<CurrentWeatherDetail>
+                                    @Query("lon")longitude: String,
+                                    @Query("units")units: String = "metric",
+                                    @Query("appid")apiKey: String = BuildConfig.API_KEY): Response<CurrentWeatherDetail>
 
 }

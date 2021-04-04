@@ -10,7 +10,8 @@ interface ForecastWeatherService {
 
     @GET("forecast")
     suspend fun getForecastWeatherByLatLong(@Query("lat")latitude: String,
-                                    @Query("lon")longitude: String,
-                                    @Query("appid")apiKey: String = BuildConfig.API_KEY): Response<ForecastWeatherDetail>
+                                            @Query("lon")longitude: String,
+                                            @Query("units")units: String = "metric",
+                                            @Query("appid")apiKey: String = BuildConfig.API_KEY): Response<ForecastWeatherDetail>
 
 }

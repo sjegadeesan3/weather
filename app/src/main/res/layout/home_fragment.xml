@@ -23,7 +23,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="@{viewModel.currentWeatherDetail.sys.country}"
+        android:text="@{viewModel.currentWeatherUiData.countryName}"
         tools:text="Singapore" />
 
     <TextView
@@ -34,6 +34,7 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:text="@{viewModel.currentWeatherUiData.city}"
         app:layout_constraintTop_toBottomOf="@+id/country_name"
         tools:text="Ang Mo Kio" />
 
@@ -42,10 +43,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textSize="100sp"
+        android:textSize="80sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/city_name"
+        android:text="@{viewModel.currentWeatherUiData.temperature}"
         tools:text="20ºC" />
 
     <TextView
@@ -56,6 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/temprature"
+        android:text="@{viewModel.currentWeatherUiData.weatherMain}"
         tools:text="Clouds" />
 
     <TextView
@@ -66,6 +69,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/weather_main"
+        android:text="@{viewModel.currentWeatherUiData.weatherDescription}"
         tools:text="broken clouds" />
 
 
@@ -92,6 +96,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/temp_min"
                 app:layout_constraintTop_toTopOf="parent"
+                android:text="@{viewModel.currentWeatherUiData.temperatureMax}"
                 tools:text="Temp Max : 20ºC" />
 
             <TextView
@@ -101,6 +106,7 @@
                 app:layout_constraintStart_toEndOf="@+id/temp_max"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:text="@{viewModel.currentWeatherUiData.temperatureMin}"
                 tools:text="Temp Min : 20ºC" />
 
             <TextView
@@ -110,6 +116,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/humidity"
                 app:layout_constraintTop_toBottomOf="@+id/temp_max"
+                android:text="@{viewModel.currentWeatherUiData.wind}"
                 tools:text="Wind : 1.54m/s" />
 
             <TextView
@@ -119,6 +126,7 @@
                 app:layout_constraintStart_toEndOf="@+id/wind"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/temp_min"
+                android:text="@{viewModel.currentWeatherUiData.humidity}"
                 tools:text="humidity : 83%" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
