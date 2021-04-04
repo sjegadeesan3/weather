@@ -40,5 +40,5 @@
     * ViewModel
     * LiveData
     * Material Design
-    * 
+    * SSL Pinning
 
